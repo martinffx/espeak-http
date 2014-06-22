@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gem 'sinatra'
 gem "espeak-ruby", require: "espeak"
 gem 'puma'
-gem 'whenever'
 
 group :development do
   gem 'pry-byebug'
