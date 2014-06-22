@@ -7,7 +7,7 @@ server {
   server_name talktome.martinrichards.me;
   root <%= fetch(:deploy_to) %>/current/public;
 
-  location ^~ /assets/ {
+  location ^~ /tmp/ {
     gzip_static on;
     expires max;
     add_header Cache-Control public;
