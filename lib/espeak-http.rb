@@ -1,6 +1,6 @@
 %w(rubygems
    sinatra
-   espeak-ruby
+   espeak
    digest/sha1).each { |l| require l }
 
 include ESpeak
