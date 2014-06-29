@@ -1,6 +1,7 @@
 %w(rubygems
    sinatra
    espeak
+   pry-byebug
    digest/sha1).each { |l| require l }
 
 include ESpeak
@@ -13,6 +14,8 @@ get '/' do
     filename = "#{Digest::SHA1.hexdigest(params.to_s)}.mp3"
     ESpeak::Speech.new(params[:text]).save(folder + filename) unless
       File.exists? folder + filename
+
+    binding.pry
     @filename = filename
   end
 
