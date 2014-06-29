@@ -33,6 +33,7 @@ set :rbenv_roles, :all # default value
 set :puma_state, "#{shared_path}/tmp/pids/puma.state"
 set :puma_pid, "#{shared_path}/tmp/pids/puma.pid"
 set :puma_bind, "unix:/tmp/puma.#{fetch(:application)}.sock"
+set :puma_upstream, "puma-#{fetch(:application)}"
 set :puma_conf, "#{shared_path}/puma.rb"
 set :puma_access_log, "#{shared_path}/log/puma_error.log"
 set :puma_error_log, "#{shared_path}/log/puma_access.log"
