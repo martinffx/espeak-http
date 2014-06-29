@@ -12,6 +12,8 @@ set :branch, 'master'
 set :deploy_to, "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
 set :scm, :git
 
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets}
+
 set :format, :pretty
 set :log_level, :info
 set :pty, true
@@ -30,6 +32,7 @@ set :rbenv_map_bins, %w{rake gem bundle}
 set :rbenv_roles, :all # default value
 
 # Puma
+set :puma_rackup, "./config.ru"
 set :puma_state, "#{shared_path}/tmp/pids/puma.state"
 set :puma_pid, "#{shared_path}/tmp/pids/puma.pid"
 set :puma_bind, "unix:/tmp/puma.#{fetch(:application)}.sock"
