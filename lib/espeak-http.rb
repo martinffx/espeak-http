@@ -5,17 +5,21 @@
 
 include ESpeak
 
+set :public_folder, "#{Dir.pwd}/public"
+folder = "#{Dir.pwd}/public/tmp/"
+
 get '/' do
   if params[:text]
-    filename = "/tmp/#{Digest::SHA1.hexdigest(params.to_s)}.mp3"
-    ESpeak::Speech.new(params[:text]).save(filename) unless File.exists? filename
+    filename = "#{Digest::SHA1.hexdigest(params.to_s)}.mp3"
+    ESpeak::Speech.new(params[:text]).save(folder + filename) unless
+      File.exists? folder + filename
     @filename = filename
   end
 
   erb :index
 end
 
-get '/tmp/:filename' do
-  [200, {'Content-type' => 'audio/mpeg'},
-    File.read("/tmp/#{params[:filename]}")]
-end
+# get '/tmp/:filename' do
+#   [200, {'Content-type' => 'audio/mpeg'},
+#     File.read("#{folder}#{params[:filename]}")]
+# end
