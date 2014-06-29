@@ -43,6 +43,12 @@ set :puma_workers, 0
 set :puma_init_active_record, false
 
 namespace :deploy do
+  task :create_tmp do
+    on roles(:all) do
+      execute :touch, "#{fetch(:puma_access_log)}"
+      execute :touch, "#{fetch(:puma_error_log)}"
+    end
+  end
 
   desc 'Restart application'
   task :restart do
@@ -62,5 +68,8 @@ namespace :deploy do
       # end
     end
   end
+
+  after :starting, :create_tmp
+  after :finishing, 'deploy:cleanup', 'nginx:restart'
 
 end

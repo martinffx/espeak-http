@@ -1,4 +1,4 @@
-upstream puma {
+upstream puma-<%= fetch(:application) %> {
   server <%= fetch(:puma_bind) %> fail_timeout=0;
 }
 

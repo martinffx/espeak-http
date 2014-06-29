@@ -9,6 +9,7 @@ namespace :nginx do
         upload_tmp = "/tmp/#{fetch(:application)}"
         upload_location = "/etc/nginx/sites-available/#{fetch(:application)}"
 
+        execute "sudo rm -rf #{upload_location}"
         upload! config, upload_tmp
         execute "sudo mv #{upload_tmp} #{upload_location}"
         execute "sudo ln -fs #{upload_location} " +
