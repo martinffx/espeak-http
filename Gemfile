@@ -7,6 +7,6 @@ gem 'puma'
 group :development do
   gem 'pry-byebug'
   gem 'capistrano'
-  gem 'capistrano-puma'
+  gem 'capistrano3-puma'
   gem 'capistrano-rbenv'
 end

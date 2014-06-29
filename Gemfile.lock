@@ -8,11 +8,12 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (~> 1.3)
-    capistrano-puma (0.2.3)
-      capistrano (>= 3.0)
     capistrano-rbenv (2.0.2)
       capistrano (~> 3.1)
       sshkit (~> 1.3)
+    capistrano3-puma (0.6.0)
+      capistrano (~> 3.0)
+      puma (>= 2.6)
     coderay (1.1.0)
     colorize (0.7.3)
     columnize (0.8.9)
@@ -23,13 +24,13 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
-    pry (0.9.12.6)
-      coderay (~> 1.0)
-      method_source (~> 0.8)
+    pry (0.10.0)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-byebug (1.3.2)
+    pry-byebug (1.3.3)
       byebug (~> 2.7)
-      pry (~> 0.9.12)
+      pry (~> 0.10)
     puma (2.8.2)
       rack (>= 1.1, < 2.0)
     rack (1.5.2)
@@ -52,8 +53,8 @@ PLATFORMS
 
 DEPENDENCIES
   capistrano
-  capistrano-puma
   capistrano-rbenv
+  capistrano3-puma
   espeak-ruby
   pry-byebug
   puma
