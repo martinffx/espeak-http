@@ -12,17 +12,17 @@ folder = "#{Dir.pwd}/public/tmp/"
 get '/' do
   if params[:text]
     filename = "#{Digest::SHA1.hexdigest(params.to_s)}.mp3"
+    binding.pry
+    ensure_tmp_folder(folder)
     ESpeak::Speech.new(params[:text]).save(folder + filename) unless
       File.exists? folder + filename
-
-    binding.pry
     @filename = filename
   end
 
   erb :index
 end
 
-# get '/tmp/:filename' do
-#   [200, {'Content-type' => 'audio/mpeg'},
-#     File.read("#{folder}#{params[:filename]}")]
-# end
+
+def ensure_tmp_folder(folder)
+  Dir.mkdir(folder) unless Dir.exists? folder
+end
